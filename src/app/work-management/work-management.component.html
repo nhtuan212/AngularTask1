@@ -1,0 +1,362 @@
+<section class="projectDetails work-management">
+    <div class="container">
+        <div class="d-flex">
+            <app-menu-details></app-menu-details>
+            <div id="content-wrapper" class="content-wrapper w-100">
+                <div class="content-header">
+                    <app-header-details [title]="title"></app-header-details>
+                    <div class="bottom border-bottom h-60">
+                        <div class="d-flex justify-content-end align-items-center h-100 tool-details">
+                            <div class="col mx-1">
+                                <div ngbDropdown class="dropdownAdvanceSearch">
+                                    <button class="btn btn-primary" id="dropdownAdvanceSearch" ngbDropdownToggle><i class="fas fa-search-plus"></i> Tìm nâng cao</button>
+                                    <div ngbDropdownMenu aria-labelledby="dropdownAdvanceSearch">
+                                        <div class="d-flex align-items-center flex-wrap">
+                                            <div class="col-sm-6">
+                                                <div class="form-group">
+                                                    <div class="row align-items-center">
+                                                        <label for="week" class="col-start col-form-label text">Tuần</label>
+                                                        <div class="col-end">
+                                                            <select class="form-select" name="" id="week">
+                                                                <option value="">1</option>
+                                                                <option value="">2</option>
+                                                                <option value="">3</option>
+                                                            </select>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-sm-6">
+                                                <div class="form-group">
+                                                    <div class="row align-items-center">
+                                                        <label for="name" class="col-start col-form-label text">Tên công việc</label>
+                                                        <div class="col-end">
+                                                            <input type="text" class="form-control" id="name">
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-sm-6">
+                                                <div class="form-group">
+                                                    <div class="row align-items-center">
+                                                        <label for="month" class="col-start col-form-label text">Tháng</label>
+                                                        <div class="col-end">
+                                                            <select class="form-select" name="" id="month">
+                                                                <option value="">Chọn</option>
+                                                                <option value="">7</option>
+                                                                <option value="">8</option>
+                                                                <option value="">9</option>
+                                                            </select>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-sm-6">
+                                                <div class="form-group">
+                                                    <div class="row align-items-center">
+                                                        <label for="staff" class="col-start col-form-label text">Nhân sự</label>
+                                                        <div class="col-end">
+                                                            <input type="text" class="form-control" id="staff">
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-sm-6">
+                                                <div class="form-group">
+                                                    <div class="row align-items-center">
+                                                        <label for="module" class="col-start col-form-label text">Module</label>
+                                                        <div class="col-end">
+                                                            <select class="form-select" name="" id="module">
+                                                                <option value="">Chọn</option>
+                                                                <option value="">Học vụ</option>
+                                                                <option value="">Module khác</option>
+                                                            </select>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-sm-6">
+                                                <div class="form-group">
+                                                    <div class="row align-items-center">
+                                                        <label for="status" class="col-start col-form-label text">Trạng thái</label>
+                                                        <div class="col-end">
+                                                            <select class="form-select" name="" id="status">
+                                                                <option value="">Chọn</option>
+                                                                <option value="">Đã xong</option>
+                                                                <option value="">Chưa xong</option>
+                                                            </select>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <button class="btn mx-1 p-0" (click)="this.AppComponent.modalOpen(content)">
+                                <img src="assets/svg/buttons/add.svg" width="36" title="Thêm">
+                            </button>
+                            <a href="#" class="mx-1"><img src="assets/svg/buttons/delete.svg" width="36" title="Xóa"></a>
+                            <a href="#" class="mx-1"><img src="assets/svg/buttons/save.svg" width="36" title=""></a>
+                            <a href="#" class="mx-1"><img src="assets/svg/buttons/checked.svg" width="36" title=""></a>
+                            <a href="#" class="mx-1"><img src="assets/svg/buttons/edit.svg" width="36" title="Khóa"></a>
+                            <a href="#" class="mx-1"><img src="assets/svg/buttons/right.svg" width="36" title=""></a>
+                            <a href="#" class="mx-1"><img src="assets/svg/buttons/document.svg" width="36" title=""></a>
+                        </div>
+                    </div>
+                </div>
+                <div class="content-body">
+                    <div class="pin d-flex justify-content-between align-items-center">
+                        <p class="text mb-0"><img class="mr-3" src="assets/svg/icons/pin.svg" width="20"> Có 5 nội dung To-do đang được giảm ghim <span class="mx-3">|</span> Đến hạn: 15/10/2021 Cần releose module nhân sự cho kkhách hàng ABC...</p>
+                        <div ngbDropdown class="dropdownPin">
+                            <div id="dropdownPin" ngbDropdownToggle><i class="fas fa-angle-double-down"></i></div>
+                            <div ngbDropdownMenu aria-labelledby="dropdownPin">
+                                <div class="row pinContent">
+                                    <div class="pinItems col-sm-6 py-3" *ngFor="let pinData of pinDatas">
+                                        <div class="d-flex col-sm-9">
+                                            <div class="date col-md-2 col-sm-4 text-center">
+                                                <p class="text-white mb-0">18/10</p>
+                                                <span>Trễ 7 ngày</span>
+                                            </div>
+                                            <div class="info col-md-10 col-sm-8 d-flex flex-column justify-content-between">
+                                                <div class="row justify-content-between align-items-center">
+                                                    <div class="description col-10">{{pinData.description}}</div>
+                                                    <div class="status col-2">{{pinData.status}}</div>
+                                                </div>
+                                                <div class="row justify-content-between align-items-center">
+                                                    <div class="name col">{{pinData.name}}</div>
+                                                    <div class="date-finish col">Ngày giau: {{pinData.dateFinish}}</div>
+                                                    <div class="note col col-sm-5">Ghi chú: {{pinData.note}}</div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="content-body detailsTable" [ngClass]="{'filter-blur': this.AppComponent.filterBlur == true}">
+                        <div class="data-group">
+                            <div class="row justify-content-end">
+                                <div class="col-md-2">
+                                </div>
+                                <div class="col-md-10">
+                                    <table class="table menu title table-borderless">
+                                        <thead>
+                                            <tr>
+                                                <td><span class="circle"></span></td>
+                                                <td>Module</td>
+                                                <td>Issue URL</td>
+                                                <td class="workManagermentName">Tên công việc</td>
+                                                <td>Nguồn gốc</td>
+                                                <td>Thời gian <br> (giờ)</td>
+                                                <td>Từ ngày</td>
+                                                <td>Đến ngày</td>
+                                                <td class="status text-center">Trạng thái</td>
+                                                <td class="note">Ghi chú</td>
+                                                <td>Sửa</td>
+                                            </tr>
+                                        </thead>
+                                    </table>
+                                </div>
+                            </div>
+                            <div class="row" *ngFor="let workManagementData of workManagementDatas">
+                                <div class="col-md-2">
+                                    <div class="staffInfo text-uppercase">
+                                        <p class="d-flex align-items-center text-lg"><i class="fas fa-user me-2"></i>{{workManagementData.name}}</p>
+                                        <p>Tổng thời gian (giờ): <b class="ms-3">{{workManagementData.totalTime}}</b></p>
+                                        <p>Mức độ hoàn thành <span class="percentage ms-3">{{workManagementData.percentage}}%</span></p>
+                                        <p class="evaluate text-capitalize fst-italic"><i class="fas fa-pencil-alt me-2"></i>{{workManagementData.evaluate}}</p>
+                                    </div>
+                                </div>
+                                <div class="col-md-10">
+                                    <table class="table data mb-5 table-borderless">
+                                        <tbody>
+                                            <tr *ngFor="let projects of workManagementData.projects">
+                                                <td><span class="circle" [ngClass]="{'active': projects.active === 1}"></span></td>
+                                                <td>{{projects.module}}</td>
+                                                <td>{{projects.url}}</td>
+                                                <td class="workManagermentName">{{projects.workName}}</td>
+                                                <td><img [src]="resourceIcons(projects.resource)" width="25"></td>
+                                                <td>{{projects.workTime}}</td>
+                                                <td>{{projects.fromDate}}</td>
+                                                <td>{{projects.toDate}}</td>
+                                                <td class="status">
+                                                    <div class="statusInfo" [ngClass]="resourceStatus(projects.status, 'className')" [innerHTML]="resourceStatus(projects.status, 'text')"></div>
+                                                </td>
+                                                <td class="note">{{projects.note}}</td>
+                                                <td><img src="assets/svg/icons/pencil.svg" width="21"></td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                        <nav class="paging" aria-label="...">
+                            <ul class="pagination justify-content-start">
+                                <li class="page-item disabled">
+                                    <span class="page-link"><<</span>
+                                </li>
+                                <li class="page-item disabled">
+                                    <span class="page-link"><</span>
+                                </li>
+                                <li class="page-item"><a class="page-link" href="#">1</a></li>
+                                <li class="page-item active" aria-current="page">
+                                    <span class="page-link">2</span>
+                                </li>
+                                <li class="page-item"><a class="page-link" href="#">3</a></li>
+                                <li class="page-item">
+                                    <a class="page-link" href="#">></a>
+                                </li>
+                                <li class="page-item">
+                                    <a class="page-link" href="#">>></a>
+                                </li>
+                            </ul>
+                        </nav>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<ng-template #content let-modal>
+    <div class="modal-header">
+        <h4 class="modal-title">Thêm / sửa công việc</h4>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" (click)="modal.dismiss('cancel click')"></button>
+    </div>
+    <div class="modal-body px-2">
+        <form class="modal-workingManagement">
+            <div class="col-top col-12 px-4">
+                <div class="row">
+                    <div class="form-group col-sm-6">
+                        <div class="d-flex">
+                            <label class="col-form-label col-start">Nhân sự *</label>
+                            <div class="col-end">
+                                <select class="form-select col-sm-9" name="">
+                                    <option value="">Hoàng Tuấn</option>
+                                    <option value="">Quỳnh Như</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group col-sm-6">
+                    </div>
+                    <div class="form-group col-sm-6">
+                        <div class="d-flex">
+                            <label class="col-start col-form-label">Tháng *</label>
+                            <select class="form-select col-end" name="">
+                                <option value="">10</option>
+                                <option value="">11</option>
+                                <option value="">12</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-group col-sm-6">
+                        <div class="d-flex">
+                            <label class="col-start col-form-label">Tuần</label>
+                            <select class="form-select col-end" name="">
+                                <option value="">Tuần 1 (05/07 - 09/07)</option>
+                                <option value="">Tuần 2 (10/07 - 15/07)</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-bottom col-12 px-4">
+                <div class="row">
+                    <div class="form-group col-sm-6">
+                        <div class="d-flex">
+                            <label class="col-start col-form-label">Module</label>
+                            <select class="form-select col-end" name="">
+                                <option value="">Mầm non</option>
+                                <option value="">THTP</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-group col-sm-6">
+                        <div class="d-flex">
+                            <label class="col-start col-form-label">Nguồn</label>
+                            <div class="col-end">Tạo mới (hoặc được dời)</div>
+                        </div>
+                    </div>
+                    <div class="form-group col-sm-6">
+                        <div class="d-flex">
+                            <label class="col-start col-form-label">Tên Issue</label>
+                            <div class="col-end">
+                                <input type="text" class="form-control" value="SDG-2810">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group col-sm-6">
+                        <div class="d-flex">
+                            <label class="col-start col-form-label">Url Issue</label>
+                            <div class="col-end">
+                                <input type="text" class="form-control" value="http://abc.com">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group col-12">
+                        <div class="d-flex">
+                            <label class="col-start col-form-label">Tên công việc</label>
+                            <div class="col-end">
+                                <textarea class="form-control" name="" id="" rows="5">Điểm danh nhân sự ngoài giờ: cần chỉnh sửa. Sửa đổi mẫu báo cáo điểm danh nhân sự. Kiểm tra ngày nhập hợp lệ. Xử lý tính công</textarea>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group col-sm-6">
+                        <div class="d-flex">
+                            <label class="col-start col-form-label">Thời gian làm (giờ) *</label>
+                            <div class="col-end">
+                                <input type="text" class="form-control" value="6">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group col-sm-6">
+                        <div class="d-flex">
+                            <label class="col-start col-form-label">Trạng thái *</label>
+                            <div class="col-end">
+                                <select class="form-select col-end" name="">
+                                    <option value="">Chưa làm</option>
+                                    <option value="">Đã xong</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group col-sm-6">
+                        <div class="d-flex">
+                            <label class="col-start col-form-label">Từ ngày *</label>
+                            <div class="col-end">
+                                <input type="text" class="form-control" value="05/07/2021">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group col-sm-6">
+                        <div class="d-flex">
+                            <label class="col-start col-form-label">Đến ngày *</label>
+                            <div class="col-end">
+                                <input type="text" class="form-control" value="31/07/2021">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group col-12">
+                        <div class="d-flex">
+                            <label class="col-start col-form-label">Ghi chú</label>
+                            <div class="col-end">
+                                <input type="text" class="form-control" value="">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+    <div class="modal-footer">
+        <div class="modal-footer w-100 justify-content-center">
+            <button type="button" class="btn btn-success" (click)="modal.dismiss('cancel click')">Lưu & thêm</button>
+            <button type="button" class="btn btn-primary" (click)="modal.dismiss('cancel click')">Lưu & đóng</button>
+            <button type="button" class="btn btn-info" (click)="modal.dismiss('cancel click')">Đóng</button>
+        </div>
+    </div>
+</ng-template>

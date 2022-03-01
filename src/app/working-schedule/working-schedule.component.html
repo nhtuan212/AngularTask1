@@ -1,0 +1,73 @@
+<section class="projectDetails">
+    <div class="container">
+        <div class="d-flex">
+            <app-menu-details></app-menu-details>
+            <div class="content-wrapper w-100">
+                <div class="content-header">
+                    <app-header-details [title]="title"></app-header-details>
+                    <div class="bottom border-bottom h-60"></div>
+                </div>
+                <div class="content-body">
+                    <div class="cover-chart bg-white p-5">
+                        <div class="chart-top">
+                            <div class="row justify-content-between">
+                                <div class="col-sm-4">Tháng 9 - 2021</div>
+                                <div class="col-sm-4">Tuần 1: 5/7 - 10/7</div>
+                                <div class="col-sm-3">< Hôm nay ></div>
+                            </div>
+                        </div>
+                        <div class="chart-middle py-5">
+                            <div class="row justify-content-between">
+                                <div class="col-middle col-md-5 py-2">
+                                    <h2 class="title text-center text-uppercase">Kế hoạch toàn team</h2>
+                                    <div class="row justify-content-between align-items-center py-2">
+                                        <div class="col-6 d-flex align-items-center">
+                                            <h1 class="mb-0">81%</h1>
+                                            <p class="mb-0 ps-3">(250/308 giờ)</p>
+                                        </div>
+                                        <div class="col-6 d-flex align-items-center">
+                                            <h2 class="mb-0">56</h2>
+                                            <p class="mb-0 ps-3">Tổng số task</p>
+                                        </div>
+                                    </div>
+                                    <div class="row justify-content-between align-items-center py-2">
+                                        <div class="col-6">
+                                            Tổng số giờ đã lên kế hoạch
+                                        </div>
+                                        <div class="col-6 d-flex align-items-center">
+                                            <h2 class="mb-0">4/7</h2>
+                                            <p class="mb-0 ps-3">user đã tạo task</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-middle progress-team col-md-5 py-2">
+                                    <h2 class="title text-center text-uppercase">Tiến độ toàn team</h2>
+                                    <div class="row justify-content-between align-items-center py-2">
+                                        <div class="col-6 d-flex align-items-center time">
+                                            <h1 class="mb-0">47%</h1>
+                                            <p class="mb-0 ps-3">(145/308 giờ)</p>
+                                        </div>
+                                        <div class="col-6 d-flex align-items-center task">
+                                            <h2 class="mb-0">18/56</h2>
+                                            <p class="mb-0 ps-3">task xong hoặc vắng</p>
+                                        </div>
+                                    </div>
+                                    <div class="row justify-content-between align-items-center py-2 remaining">
+                                        <div class="col-6">
+                                            Hoàn thành
+                                        </div>
+                                        <div class="col-6 d-flex align-items-center">
+                                            <h2 class="mb-0">38</h2>
+                                            <p class="mb-0 ps-3">task tồn đọng</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <chart [type]="type" [data]="data" [options]="options" style="height: 450px;"></chart>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

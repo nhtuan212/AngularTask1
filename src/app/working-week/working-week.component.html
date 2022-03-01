@@ -1,0 +1,212 @@
+<section class="projectDetails">
+    <div class="container">
+        <div class="d-flex">
+            <app-menu-details></app-menu-details>
+            <div class="content-wrapper w-100">
+                <div class="content-header">
+                    <app-header-details [title]="title"></app-header-details>
+                    <div class="bottom border-bottom h-60">
+                        <div class="d-flex justify-content-end align-items-center h-100 tool-details">
+                            <select class="form-select bg-success text-white filter-form mx-1" name="" id="">
+                                <option value="">Chọn tháng</option>
+                                <option value="">Tháng 7</option>
+                                <option value="">Tháng 8</option>
+                                <option value="">Tháng 9</option>
+                            </select>
+                            <i class="fas fa-search mx-1"></i>
+                            <button class="btn mx-1 p-0" (click)="this.AppComponent.modalOpen(content)">
+                                <img src="assets/svg/buttons/add.svg" width="36" title="Thêm">
+                            </button>
+                            <a href="#" class="mx-1"><img src="assets/svg/buttons/delete.svg" width="36" title="Xóa"></a>
+                            <a href="#" class="mx-1"><img src="assets/svg/buttons/edit.svg" width="36" title="Khóa"></a>
+                        </div>
+                    </div>
+                </div>
+                <div class="content-body detailsTable" [ngClass]="{'filter-blur': this.AppComponent.filterBlur == true}">
+                    <table class="table menu title table-borderless">
+                        <thead>
+                            <tr>
+                                <td><span class="circle"></span></td>
+                                <td>Giá trị</td>
+                                <td>Tháng</td>
+                                <td>Ngày bắt đầu</td>
+                                <td>Ngày kết thúc</td>
+                                <td>Tuần</td>
+                                <td>STT Tuần</td>
+                                <td>Từ ngày</td>
+                                <td>Đến ngày</td>
+                                <td>Số giờ làm</td>
+                                <td>Đã khóa</td>
+                                <td>Sửa</td>
+                            </tr>
+                        </thead>
+                    </table>
+                    <div class="data-group">
+                        <table class="table data mb-5 table-borderless" *ngFor="let workingWeekData of workingWeekDatas">
+                            <thead>
+                                <tr>
+                                    <th><span class="circle"></span></th>
+                                    <th>{{workingWeekData.value}}</th>
+                                    <th>{{workingWeekData.month}}</th>
+                                    <th>{{workingWeekData.fromDate}}</th>
+                                    <th>{{workingWeekData.toDate}}</th>
+                                    <th></th>
+                                    <th></th>
+                                    <th></th>
+                                    <th></th>
+                                    <th></th>
+                                    <th></th>
+                                    <th><img src="assets/svg/icons/pencil.svg" width="20"></th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr *ngFor="let lists of workingWeekData.lists">
+                                    <td><span class="circle"></span></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td>{{lists.week}}</td>
+                                    <td>{{lists.number}}</td>
+                                    <td>{{lists.toDate}}</td>
+                                    <td>{{lists.fromDate}}</td>
+                                    <td>{{lists.time}}</td>
+                                    <td><img [src]="lockIcons(lists.lock)" width="20"></td>
+                                    <td></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <nav class="paging" aria-label="...">
+                        <ul class="pagination justify-content-start">
+                            <li class="page-item disabled">
+                                <span class="page-link"><<</span>
+                            </li>
+                            <li class="page-item disabled">
+                                <span class="page-link"><</span>
+                            </li>
+                            <li class="page-item"><a class="page-link" href="#">1</a></li>
+                            <li class="page-item active" aria-current="page">
+                                <span class="page-link">2</span>
+                            </li>
+                            <li class="page-item"><a class="page-link" href="#">3</a></li>
+                            <li class="page-item">
+                                <a class="page-link" href="#">></a>
+                            </li>
+                            <li class="page-item">
+                                <a class="page-link" href="#">>></a>
+                            </li>
+                        </ul>
+                    </nav>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<ng-template #content let-modal>
+    <div class="modal-header">
+        <h4 class="modal-title">Thêm / sửa tuần làm việc</h4>        
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" (click)="modal.dismiss('cancel click')"></button>
+    </div>
+    <div class="modal-body">
+        <form class="modal-workingWeek">
+            <div class="col-12">
+                <div class="row">
+                    <div class="form-group col-sm-8">
+                        <div class="row">
+                            <label for="monthName" class="col-form-label col-start">Tên tháng *</label>
+                            <div class="col-end">
+                                <input type="password" class="form-control" id="monthName">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group col-sm-4">
+                        <div class="row">
+                            <label class="col-sm-3 col-form-label">Năm</label>
+                            <div class="col-sm-9">
+                                <select class="form-select" name="" id="">
+                                    <option value="">2021</option>
+                                    <option value="">2020</option>
+                                    <option value="">2019</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="form-group col-12">
+                <div class="row">
+                    <label for="fromDate" class="col-form-label col-start">Ngày bắt đầu *</label>
+                    <div class="col-end">
+                        <div class="row">
+                            <div class="col-sm-11">
+                                <input type="text" class="form-control" id="fromDate" value="Tháng 7">
+                            </div>
+                            <div class="col-sm-1 text-right"><i class="fas fa-calendar-alt"></i></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="form-group col-12">
+                <div class="text">* Ngày bắt đầu nên là ngày của thứ hai đầu tiên trong tháng</div>
+            </div>
+            <div class="form-group col-12">
+                <div class="row">
+                    <label for="toDate" class="col-form-label col-start">Ngày kết thúc *</label>
+                    <div class="col-end">
+                        <div class="row">
+                            <div class="col-sm-11">
+                                <input type="text" class="form-control" id="toDate" value="Tháng 7">
+                            </div>
+                            <div class="col-sm-1 text-right"><i class="fas fa-calendar-alt"></i></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="form-group col-12">
+                <div class="text">* Ngày kết thúc nên là ngày của thứ sáu (hoặc bảy) của tuần cuối cùng <br>(trong cùng tháng hoặc tháng tiếp theo)</div>
+            </div>
+            <div class="form-group col-12">
+                <div class="row">
+                    <label for="month" class="col-form-label col-start">Giá trị tháng *</label>
+                    <div class="col-end">
+                        <select class="form-select col-md-2 col-sm-5" name="" id="">
+                            <option value="">8</option>
+                            <option value="">7</option>
+                            <option value="">6</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+            <div class="custom-group mt-5">
+                <div class="group custom-title border">
+                    <div class="d-flex">
+                        <div class="col">Tên tuần</div>
+                        <div class="col">Thứ tự</div>
+                        <div class="col">Từ ngày</div>
+                        <div class="col">Đến ngày</div>
+                        <div class="col">Số giờ làm</div>
+                        <div class="col">Đã khóa</div>
+                    </div>
+                </div>
+                <div class="group custom-content border mt-2">
+                    <div class="d-flex" *ngFor="let groupData of groupDatas">
+                        <div class="col">{{groupData.week}}</div>
+                        <div class="col">{{groupData.number}}</div>
+                        <div class="col">{{groupData.toDate}}</div>
+                        <div class="col">{{groupData.fromDate}}</div>
+                        <div class="col">{{groupData.time}}</div>
+                        <div class="col"><img src="assets/svg/icons/lock-detail.svg" width="20"></div>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+    <div class="modal-footer">
+        <div class="modal-footer w-100 justify-content-center">
+            <button type="button" class="btn btn-success" (click)="modal.dismiss('cancel click')">Lưu & thêm</button>
+            <button type="button" class="btn btn-primary" (click)="modal.dismiss('cancel click')">Lưu & đóng</button>
+            <button type="button" class="btn btn-info" (click)="modal.close('Ok click')">Đóng</button>
+        </div>
+    </div>
+</ng-template>

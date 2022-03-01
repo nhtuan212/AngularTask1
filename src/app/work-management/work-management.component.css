@@ -1,0 +1,45 @@
+.work-management .content-body{position:relative}
+.work-management .content-body .pin{position:absolute;top:0;left:0;width:100%;background:#ccfff3;padding:10px 20px;box-shadow:2px 2px 2px rgba(0,0,0,.05)}
+.work-management .content-body .pin p{font-size:12px;color:#0098ed}
+.work-management .content-body .pin i{font-size:18px;cursor:pointer}
+.work-management .content-body .dropdown-toggle::after{content:unset}
+.dropdownPin{position:static}
+.dropdownPin .dropdown-menu{left:unset!important;right:0;width:calc(100% - 20px);background:rgba(255,255,255,.8);border:none}
+.pinItems .date{background:#7becc3;padding:10px;font-size:12px;border-radius:5px}
+.pinItems .date span{color:#ea0000}
+.pinItems .info{font-size:12px}
+.pinItems .info .description{font-size:15px;color:#005aa9}
+.pinItems .info .status{background:#7becc3;padding:3px 8px;color:#fff;text-align:center;border-radius:5px}
+.pinItems .info .name{color:#0075ff}
+.modal-backdrop.show{opacity:1}
+.modal-workingManagement .col-top{margin-bottom:50px;box-shadow:0 5px 5px rgba(0,0,0,.1);border-radius:10px}
+.modal-workingManagement .form-group{font-size:12px}
+.modal-workingManagement .form-group .col-start{width:120px}
+.modal-workingManagement .form-group .col-end{width:calc(100% - 120px)}
+.dropdown-menu.show{background:#fff!important;box-shadow:0 0 5px 1px #ddd}
+.work-management .staffInfo{height:260px;padding:18px 10px;font-size:12px;border:1px solid #ddd;border-radius:10px;box-shadow:3px 3px 5px 0 #ddd;overflow:auto}
+.work-management .staffInfo>p{margin-bottom:20px}
+.work-management .staffInfo .percentage{background:var(--bs-warning);padding:3px;color:#fff;border-radius:5px}
+.work-management .table{font-size:12px}
+.work-management .table.menu td{color:#a4a4a4;border:none}
+.work-management .table td{width:60px}
+.work-management .table td.status{width:80px}
+.work-management .table td.workManagermentName{width:150px}
+.work-management .table td.note{width:120px}
+.work-management .table td .statusInfo{display:flex;align-items:center;justify-content:center;height:48px;padding:5px 10px;font-size:11px;line-height:1.1;text-align:center;border-radius:5px}
+.work-management .table td .statusInfo.finished{background:rgba(0,136,255,.05);color:#0098ed;border:1px solid #0098ed}
+.work-management .table td .statusInfo.prioritize{background:rgba(189,255,0,.05);color:#029c52;border:1px solid #029c52}
+.work-management .table td .statusInfo.unfinished{background:rgba(255,138,0,.05);color:#ff8a00;border:1px solid #ff8a00}
+.work-management .table td .statusInfo.unfinished-otherCheck{background:rgba(255,92,0,.05);padding:8px 6px;color:#ea0000;border:1px solid #ea0000}
+.work-management .table td .statusInfo.unfinished-otherUncheck{background:rgba(255,0,153,.05);color:#de057a;border:1px solid #de057a}
+.work-management .table td .statusInfo.notReceived{background:rgba(0,136,255,.05);color:#005aa9;border:1px solid #005aa9}
+.work-management .table td .statusInfo.absent{background:rgba(51,0,255,.05);color:#a605de;border:1px solid #a605de}
+.work-management tbody{display:block;height:260px;overflow:auto}
+.work-management tbody tr{display:table;width:100%;table-layout:fixed}
+.work-management span.circle{position:relative;display:block;width:15px;height:15px;border:1px solid #ddd;border-radius:50%}
+.work-management span.circle::after{position:absolute;top:2px;left:2px;content:'';width:calc(100% - 4px);height:calc(100% - 4px);border-radius:50%}
+.work-management span.circle.active::after{background:#6bc950}
+.work-management ::-webkit-scrollbar{width:2px}
+.work-management ::-webkit-scrollbar-track{background:#f1f1f1}
+.work-management ::-webkit-scrollbar-thumb{background:#888}
+.work-management ::-webkit-scrollbar-thumb:hover{background:#555}

@@ -1,0 +1,23 @@
+.projectCategories{position:fixed;width:100%;height:100%;background:url(../../assets/svg/projects/bg-projectCategories.svg) center/cover no-repeat}
+.projectCategories .title{font:var(--bold) 40px/32px var(--basicFont)}
+.projectCategories p.title{font-size:21px}
+.projectCategories h3.title{color:#2465a9}
+.toolGroup .card{border-bottom:none}
+.toolGroup .card-body{background:#fff;border-bottom:8px solid #43a3f8;box-sizing:border-box;box-shadow:0 4px 4px rgba(0,0,0,.25);border-radius:10px}
+.dropdown-toggle::after{content:unset}
+.dropdown-menu{width:100%;padding:0;border:none}
+.btnTools i{font-size:20px;color:#000}
+.btnTools span{font-size:14px;color:#000}
+.menuInfoItems{background:0 0;padding:15px;border-radius:10px}
+.menuInfoItems:hover{background:rgba(221,221,221,.2)}
+.menuInfoItems:nth-child(1):hover{background:rgba(182,96,221,.05)}
+.menuInfoItems:nth-child(2):hover{background:rgba(2,185,137,.05)}
+.menuInfoItems:nth-child(3):hover{background:rgba(255,144,88,.05)}
+.menuInfoItems:nth-child(4):hover{background:rgba(86,119,255,.05)}
+.menuInfoItems:nth-child(5):hover{background:rgba(253,114,175,.05)}
+.menuInfoItems:nth-child(6):hover{background:rgba(255,109,109,.05)}
+.menuInfoItems:nth-child(7):hover{background:rgba(74,204,249,.05)}
+.menuInfoItems:nth-child(8):hover{background:rgba(255,200,1,.05)}
+.menuInfoItems p{font:var(--regular) 18px/20px var(--basicFont);color:#4a4a4a}
+.menuInfoItems span{font:12px/15px var(--basicFont);color:#a4a4a4}
+.todoList img{filter:invert(48%) sepia(79%) saturate(2476%) hue-rotate(86deg) brightness(118%) contrast(119%)}

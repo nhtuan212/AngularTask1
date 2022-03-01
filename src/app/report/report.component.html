@@ -1,0 +1,154 @@
+<section class="projectDetails report">
+    <div class="container">
+        <div class="d-flex">
+            <app-menu-details></app-menu-details>
+            <div class="content-wrapper w-100">
+                <div class="content-header">
+                    <app-header-details [title]="title"></app-header-details>
+                    <div class="bottom border-bottom h-60">
+                        <div class="d-flex justify-content-end align-items-center h-100 tool-details">
+                            <div class="col mx-1">
+                                <div ngbDropdown class="dropdownAdvanceSearch">
+                                    <button class="btn btn-primary" id="dropdownAdvanceSearch" ngbDropdownToggle><i class="fas fa-search-plus"></i> Tìm nâng cao</button>
+                                    <div ngbDropdownMenu aria-labelledby="dropdownAdvanceSearch">
+                                        <div class="d-flex align-items-center flex-wrap">
+                                            <div class="col-12">
+                                                <div class="form-group">
+                                                    <div class="row align-items-center">
+                                                        <label class="col-start col-form-label text">Nội dung</label>
+                                                        <div class="col-end">
+                                                            <input type="text" class="form-control">
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-12">
+                                                <div class="form-group">
+                                                    <div class="row align-items-center">
+                                                        <label class="col-start col-form-label text">Tháng</label>
+                                                        <div class="col-end">
+                                                            <select class="form-select" name="">
+                                                                <option value="">1</option>
+                                                                <option value="">2</option>
+                                                                <option value="">3</option>
+                                                            </select>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="content-body">
+                    <div class="row justify-content-end">
+                        <div class="col-md-10 p-3 border">
+                            <chart [type]="type" [data]="data" [options]="options" style="height: 250px;"></chart>
+                            <p class="mt-4">Biểu đồ biểu diễn: Số giờ làm + % hoàn thành của các nhân sự theo THÁNG.</p>
+                            <p>Mỗi nhân sự sẽ có 2 cột như trên.</p>
+                        </div>
+                    </div>
+
+                    <table class="table table-borderless mt-5">
+                        <thead>
+                            <tr>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td width="3%"></td>
+                                <td></td>
+                                <td class="colSpan" width="15%" colspan="2">Tuần 1 | 05/07 - 09/07</td>
+                                <td class="colSpan" width="15%" colspan="2">Tuần 2 | 12/07 - 16/07</td>
+                                <td class="colSpan" width="15%" colspan="2">Tuần 3 | 19/07 - 23/07</td>
+                                <td class="colSpan" width="15%" colspan="2">Tuần 4 | 26/07 - 30/07</td>
+                            </tr>
+                        </thead>
+                        <thead>
+                            <tr>
+                                <td></td>
+                                <td>STT</td>
+                                <td>Nhân sự</td>
+                                <td>H.Thành</td>
+                                <td>Xếp loại</td>
+                                <td>Nhận xét tháng</td>
+                                <td>Số giờ</td>
+                                <td width="6%">% hoàn thành</td>
+                                <td>Số giờ</td>
+                                <td width="6%">% hoàn thành</td>
+                                <td>Số giờ</td>
+                                <td width="6%">% hoàn thành</td>
+                                <td>Số giờ</td>
+                                <td width="6%">% hoàn thành</td>
+                            </tr>
+                        </thead>
+                        <tbody class="bg-white" *ngFor="let reportData of reportDatas">
+                            <tr>
+                                <th><span class="circle circle-body active"></span></th>
+                                <td>{{reportData.number}}</td>
+                                <td>{{reportData.name}}</td>
+                                <td>
+                                    <div class="finished" [ngClass]=finishedActive(reportData.finished)>
+                                        {{reportData.finished}}%
+                                    </div>
+                                </td>
+                                <td>{{reportData.kind}}</td>
+                                <td>{{reportData.comment}}</td>
+                                <td class="time">
+                                    <p>40</p>
+                                </td>
+                                <td class="percent">
+                                    <div class="d-flex align-items-center justify-content-between">40% <span class="percent-icon"></span></div>
+                                </td>
+                                <td>
+                                    <div class="time active">50</div>
+                                </td>
+                                <td>
+                                    <div class="percent active">
+                                        <div class="d-flex align-items-center justify-content-between">50% <span class="percent-icon"></span></div>
+                                    </div>
+                                </td>
+                                <td class="time">
+                                    <div>60</div>
+                                </td>
+                                <td class="percent">
+                                    <div class="d-flex align-items-center justify-content-between">60% <span class="percent-icon"></span></div>
+                                </td>
+                                <td class="time active">
+                                    <div>70</div>
+                                </td>
+                                <td class="percent">
+                                    <div class="d-flex align-items-center justify-content-between">70% <span class="percent-icon"></span></div>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <nav class="paging" aria-label="...">
+                        <ul class="pagination justify-content-start">
+                            <li class="page-item disabled">
+                                <span class="page-link"><<</span>
+                            </li>
+                            <li class="page-item disabled">
+                                <span class="page-link"><</span>
+                            </li>
+                            <li class="page-item"><a class="page-link" href="#">1</a></li>
+                            <li class="page-item active" aria-current="page">
+                                <span class="page-link">2</span>
+                            </li>
+                            <li class="page-item"><a class="page-link" href="#">3</a></li>
+                            <li class="page-item">
+                                <a class="page-link" href="#">></a>
+                            </li>
+                            <li class="page-item">
+                                <a class="page-link" href="#">>></a>
+                            </li>
+                        </ul>
+                    </nav>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

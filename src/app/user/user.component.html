@@ -1,0 +1,228 @@
+<section class="projectDetails user">
+    <div class="container">
+        <div class="d-flex">
+            <app-menu-details></app-menu-details>
+            <div class="content-wrapper w-100">
+                <div class="content-header">
+                    <app-header-details [title]="title"></app-header-details>
+                    <div class="bottom border-bottom h-60">
+                        <div class="d-flex justify-content-end align-items-center h-100 tool-details">
+                            <div class="col mx-1">
+                                <div ngbDropdown class="dropdownAdvanceSearch">
+                                    <button class="btn btn-primary" id="dropdownAdvanceSearch" ngbDropdownToggle><i class="fas fa-search-plus"></i> Tìm nâng cao</button>
+                                    <div ngbDropdownMenu aria-labelledby="dropdownAdvanceSearch">
+                                        <div class="d-flex justify-content-between align-items-center flex-wrap">
+                                            <div class="col-12">
+                                                <div class="form-group">
+                                                    <input type="text" class="form-control" placeholder="Họ tên">
+                                                </div>
+                                            </div>
+                                            <div class="col-sm-5">
+                                                <div class="form-group">
+                                                    <input type="text" class="form-control" placeholder="Tên đăng nhập">
+                                                </div>
+                                            </div>
+                                            <div class="form-group col-sm-2 text-center d-sm-block d-none"><i class="fas fa-circle" style="font-size:9px;color: #BCCBFF;"></i></div>
+                                            <div class="col-sm-5">
+                                                <div class="form-group">
+                                                    <input type="text" class="form-control" placeholder="Dự án">
+                                                </div>
+                                            </div>
+                                            <div class="col-sm-5">
+                                                <div class="form-group">
+                                                    <select class="form-select" name="">
+                                                        <option value="">Vai trò</option>
+                                                        <option value="">1</option>
+                                                        <option value="">2</option>
+                                                    </select>
+                                                </div>
+                                            </div>
+                                            <div class="col-12">
+                                                <div class="form-group status d-flex">
+                                                    <label class="col-start">Trạng thái</label>
+                                                    <div class="icheck-primary d-inline col-3">
+                                                        <input type="radio" id="active" name="r1">
+                                                        <label for="active">Hoạt động</label>
+                                                    </div>
+                                                    <div class="icheck-primary d-inline col-3">
+                                                        <input type="radio" id="unactive" name="r1">
+                                                        <label for="unactive">Vô hiệu</label>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="form-group col text-end">
+                                                <button class="btn btn-primary" type="submit">Tìm kiếm</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <button class="btn mx-1 p-0" (click)="this.AppComponent.modalOpen(content)">
+                                <img src="assets/svg/buttons/add.svg" width="36" title="Thêm">
+                            </button>
+                            <a href="#" class="mx-1"><img src="assets/svg/buttons/delete.svg" width="36" title="Xóa"></a>
+                        </div>
+                    </div>
+                </div>
+                <div class="content-body" [ngClass]="{'filter-blur': this.AppComponent.filterBlur == true}">
+                    <table class="table table-borderless">
+                        <thead>
+                            <tr>
+                                <td><span class="circle"></span></td>
+                                <td>Họ đệm</td>
+                                <td>Tên</td>
+                                <td>Tên đăng nhập</td>
+                                <td class="active">Đang hoạt động</td>
+                                <td width="25%">Dự án</td>
+                                <td>Vai trò</td>
+                                <td>Sửa</td>
+                            </tr>
+                        </thead>
+                        <tbody class="bg-white" *ngFor="let userData of userDatas">
+                            <tr>
+                                <th><span class="circle circle-body active"></span></th>
+                                <td>{{userData.firstname}}</td>
+                                <td width="20%">{{userData.lastname}}</td>
+                                <td>{{userData.username}}</td>
+                                <td class="active">
+                                    <span class="circle circle-body mx-auto" [ngClass]="{'active': userData.active === 1}"></span>
+                                </td>
+                                <td>{{userData.project}}</td>
+                                <td>{{userData.role}}</td>
+                                <td><img src="assets/svg/icons/pencil.svg" width="21"></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <nav class="paging" aria-label="...">
+                        <ul class="pagination justify-content-start">
+                            <li class="page-item disabled">
+                                <span class="page-link"><<</span>
+                            </li>
+                            <li class="page-item disabled">
+                                <span class="page-link"><</span>
+                            </li>
+                            <li class="page-item"><a class="page-link" href="#">1</a></li>
+                            <li class="page-item active" aria-current="page">
+                                <span class="page-link">2</span>
+                            </li>
+                            <li class="page-item"><a class="page-link" href="#">3</a></li>
+                            <li class="page-item">
+                                <a class="page-link" href="#">></a>
+                            </li>
+                            <li class="page-item">
+                                <a class="page-link" href="#">>></a>
+                            </li>
+                        </ul>
+                    </nav>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<ng-template #content let-modal>
+    <div class="modal-header">
+        <h4 class="modal-title">Thêm / sửa người dùng</h4>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" (click)="modal.dismiss('Cross click')"></button>
+    </div>
+    <div class="modal-body">
+        <form class="modal-user">
+            <div class="row">
+                <div class="form-group col-sm-8">
+                    <div class="d-flex">
+                        <label class="col-form-label col-start">Họ đệm</label>
+                        <input type="text" class="form-control col-end" value="Nguyễn Hoàng">
+                    </div>
+                </div>
+                <div class="form-group col-sm-4">
+                    <div class="d-flex">
+                        <label class="col-form-label col-start">Tên</label>
+                        <input type="text" class="form-control col-end" value="Tuấn">
+                    </div>
+                </div>
+                <div class="form-group col-sm-8">
+                    <div class="d-flex">
+                        <label class="col-form-label col-start">Tên đăng nhập</label>
+                        <input type="text" class="form-control col-end" value="nht212">
+                    </div>
+                </div>
+                <div class="form-group col-12">
+                    <label class="col-form-label">Cập nhật mật khẩu</label>
+                </div>
+                <div class="form-group col-sm-6">
+                    <div class="d-flex">
+                        <label class="col-form-label col-start">Mật khẩu</label>
+                        <div class="col-sm-7 px-0">
+                            <input type="password" class="form-control" value="">
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group col-sm-6">
+                    <div class="d-flex">
+                        <label class="col-form-label col-start">Xác nhận</label>
+                        <div class="col-sm-7 px-0">
+                            <input type="password" class="form-control" value="">
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group col-12">
+                    <div class="d-flex align-items-center">
+                        <label class="col-form-label col-start">Mật khẩu</label>
+                        <div class="col-end row">
+                            <div class="icheck-primary d-inline col-3">
+                                <input type="radio" id="status-active" name="r1">
+                                <label for="status-active">Hoạt động</label>
+                            </div>
+                            <div class="icheck-primary d-inline col-3">
+                                <input type="radio" id="status-unactive" name="r1">
+                                <label for="status-unactive">Vô hiệu</label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group col-12">
+                    <label class="col-form-label">Dự án tham gia</label>
+                </div>
+                <div class="custom-group col-12">
+                    <div class="group custom-title border">
+                        <div class="d-flex align-items-center">
+                            <div class="col">STT</div>
+                            <div class="col-4">Dự án</div>
+                            <div class="col">Member</div>
+                            <div class="col">Leader</div>
+                            <div class="col">Admin</div>
+                        </div>
+                    </div>
+                    <div class="group custom-content border mt-2">
+                        <div class="d-flex align-items-center" *ngFor="let userProjectData of userProjectDatas">
+                            <div class="col">{{userProjectData.number}}</div>
+                            <div class="col-4">{{userProjectData.project}}</div>
+                            <div class="col icheck-primary d-inline">
+                                <input type="radio" id="leader{{userProjectData.project}}" name="{{userProjectData.project}}">
+                                <label for="leader{{userProjectData.project}}"></label>
+                            </div>
+                            <div class="col icheck-primary d-inline">
+                                <input type="radio" id="member{{userProjectData.project}}" name="{{userProjectData.project}}">
+                                <label for="member{{userProjectData.project}}"></label>
+                            </div>
+                            <div class="col icheck-primary d-inline">
+                                <input type="radio" id="admin{{userProjectData.project}}" name="{{userProjectData.project}}">
+                                <label for="admin{{userProjectData.project}}"></label>
+                            </div>
+                            <!-- <div class="col"><span class="circle circle-body" [ngClass]="{'active': userProjectData.member === 1}"></span></div> -->
+                            <!-- <div class="col"><span class="circle circle-body" [ngClass]="{'active': userProjectData.leader === 1}"></span></div> -->
+                            <!-- <div class="col"><span class="circle circle-body" [ngClass]="{'active': userProjectData.admin === 1}"></span></div> -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+    <div class="modal-footer">
+        <div class="modal-footer w-100 justify-content-center">
+            <button type="button" class="btn btn-success" (click)="modal.dismiss('cancel click')">Lưu & thêm</button>
+            <button type="button" class="btn btn-primary" (click)="modal.dismiss('cancel click')">Lưu & đóng</button>
+            <button type="button" class="btn btn-info" (click)="modal.dismiss('cancel click')" ngbAutofocus>Đóng</button>
+        </div>
+    </div>
+</ng-template>

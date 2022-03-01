@@ -1,0 +1,9 @@
+.dropdownAdvanceSearch .dropdown-menu{width:270px;border:1px solid #bccbff}
+.report .col-start{width: 80px;}
+.report p{margin-bottom:0}
+.report thead td{font-size:12px;color:#a4a4a4}
+.report tbody td .finished{padding:5px 10px;font-size:12px;text-align:center;color:#fff;border-radius:5px}
+.report tbody td .time.active{display:inline-block;background:#ffb800;padding:5px 10px;border-radius:5px}
+.report tbody td .percent.active div{background:#ffb800;padding:5px 10px;border-radius:5px}
+.report tbody td .percent .percent-icon{display:block;width:21px;height:18px;mask:url(../../assets/svg/icons/note.svg) no-repeat center/contain}
+.report tbody td .percent.active span{background:#fff}

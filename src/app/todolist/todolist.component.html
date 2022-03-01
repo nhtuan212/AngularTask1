@@ -1,0 +1,221 @@
+<section class="projectDetails todolist">
+    <div class="container">
+        <div class="d-flex">
+            <app-menu-details></app-menu-details>
+            <div class="content-wrapper w-100">
+                <div class="content-header">
+                    <app-header-details [title]="title"></app-header-details>
+                    <div class="bottom border-bottom h-60">
+                        <div class="d-flex justify-content-end align-items-center h-100 tool-details">
+                            <div class="col mx-1">
+                                <div ngbDropdown class="dropdownAdvanceSearch">
+                                    <button class="btn btn-primary" id="dropdownAdvanceSearch" ngbDropdownToggle><i class="fas fa-search-plus"></i> Tìm nâng cao</button>
+                                    <div ngbDropdownMenu aria-labelledby="dropdownAdvanceSearch">
+                                        <div class="d-flex justify-content-between align-items-center flex-wrap">
+                                            <div class="col-12">
+                                                <div class="form-group">
+                                                    <input type="text" class="form-control" placeholder="Nhập nội dung">
+                                                </div>
+                                            </div>
+                                            <div class="col-sm-5">
+                                                <div class="form-group row align-items-center">
+                                                    <div class="col-9">
+                                                        <input type="text" class="form-control" placeholder="Từ ngày">
+                                                    </div>
+                                                    <div class="col-3">
+                                                        <img class="calendar-svg" src="assets/svg/icons/calenda.svg" width="28">
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="form-group col-sm-2 text-center d-sm-block d-none"><i class="fas fa-circle" style="font-size:9px;color: #BCCBFF;"></i></div>
+                                            <div class="col-sm-5">
+                                                <div class="form-group row align-items-center">
+                                                    <div class="col-9">
+                                                        <input type="text" class="form-control" placeholder="Đến ngày">
+                                                    </div>
+                                                    <div class="col-3">
+                                                        <img class="calendar-svg" src="assets/svg/icons/calenda.svg" width="28">
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-12">
+                                                <div class="form-group">
+                                                    <input type="text" class="form-control" placeholder="Người thực hiện">
+                                                </div>
+                                            </div>
+                                            <div class="col-12">
+                                                <div class="form-group status d-flex justify-content-between">
+                                                    <label>Trạng thái</label>
+                                                    <div class="icheck-primary d-inline">
+                                                        <input type="checkbox" id="check-all">
+                                                        <label for="check-all">Tất cả</label>
+                                                    </div>
+                                                    <div class="icheck-primary d-inline">
+                                                        <input type="checkbox" id="check-finished">
+                                                        <label for="check-finished">Xong</label>
+                                                    </div>
+                                                    <div class="icheck-primary d-inline">
+                                                        <input type="checkbox" id="check-unfinished">
+                                                        <label for="check-unfinished">Chưa xong</label>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-sm-6">
+                                                <div class="form-group">
+                                                    <div class="d-flex justify-content-between align-items-center">
+                                                        <label class="col-form-label">Trễ từ</label>
+                                                        <div class="col-5">
+                                                            <select class="form-select" name="">
+                                                                <option value="">1</option>
+                                                                <option value="">2</option>
+                                                            </select>
+                                                        </div>
+                                                        <div class="col-5">
+                                                            <label class="col-form-label">ngày trở lên</label>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="form-group col text-end">
+                                                <button class="btn btn-primary" type="submit">Tìm kiếm</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <button class="btn mx-1 p-0" (click)="this.AppComponent.modalOpen(content)">
+                                <img src="assets/svg/buttons/add.svg" width="36" title="Thêm">
+                            </button>
+                            <a href="#" class="mx-1"><img src="assets/svg/buttons/delete.svg" width="36" title="Xóa"></a>
+                            <a href="#" class="mx-1"><img src="assets/svg/buttons/edit.svg" width="36" title="Khóa"></a>
+                        </div>
+                    </div>
+                </div>
+                <div class="content-body" [ngClass]="{'filter-blur': this.AppComponent.filterBlur == true}">
+                    <table class="table table-borderless">
+                        <thead>
+                            <tr>
+                                <td><span class="circle"></span></td>
+                                <td>STT</td>
+                                <td>Nội dung To-do</td>
+                                <td>Người thực hiện</td>
+                                <td>Thời hạn</td>
+                                <td>Đến hạn</td>
+                                <td>Ngày giao</td>
+                                <td>Ghi chú</td>
+                                <td>Trạng thái</td>
+                            </tr>
+                        </thead>
+                        <tbody class="bg-white" *ngFor="let todoData of todoDatas">
+                            <tr>
+                                <th><span class="circle circle-body active"></span></th>
+                                <td>{{todoData.number}}</td>
+                                <td width="20%">{{todoData.content}}</td>
+                                <td>{{todoData.name}}</td>
+                                <td>
+                                    <div class="td-limit" [ngClass]="limitBorder(todoData.limit)">Trễ {{todoData.limit}} ngày</div>
+                                </td>
+                                <td>{{todoData.time}}</td>
+                                <td>{{todoData.deliveryDate}}</td>
+                                <td width="15%">{{todoData.note}}</td>
+                                <td><span class="circle circle-body" [ngClass]="{'active': todoData.status === 1}"></span></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <nav class="paging" aria-label="...">
+                        <ul class="pagination justify-content-start">
+                            <li class="page-item disabled">
+                                <span class="page-link"><<</span>
+                            </li>
+                            <li class="page-item disabled">
+                                <span class="page-link"><</span>
+                            </li>
+                            <li class="page-item"><a class="page-link" href="#">1</a></li>
+                            <li class="page-item active" aria-current="page">
+                                <span class="page-link">2</span>
+                            </li>
+                            <li class="page-item"><a class="page-link" href="#">3</a></li>
+                            <li class="page-item">
+                                <a class="page-link" href="#">></a>
+                            </li>
+                            <li class="page-item">
+                                <a class="page-link" href="#">>></a>
+                            </li>
+                        </ul>
+                    </nav>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<ng-template #content let-modal>
+    <div class="modal-header">
+        <h4 class="modal-title">Thêm / sửa To do</h4>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" (click)="modal.dismiss('Cross click')"></button>
+    </div>
+    <div class="modal-body px-2">
+        <form class="modal-todolist">
+            <div class="row px-4">
+                <div class="form-group col-12">
+                    <div class="d-flex">
+                        <label class="col-form-label col-start">Nội dung *</label>
+                        <div class="col-end">
+                            <input type="text" class="form-control" value="">
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group col-12">
+                    <div class="d-flex">
+                        <label class="col-form-label col-start">Người thực hiện *</label>
+                        <div class="col-end">
+                            <input type="text" class="form-control col-sm-6" value="">
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group col-12">
+                    <div class="d-flex">
+                        <label class="col-start col-form-label">Ngày giao</label>
+                        <div class="col-end">
+                            <select class="form-select col-sm-6" name="">
+                                <option value="">Defaul là hôm nay</option>
+                                <option value="">11/12</option>
+                                <option value="">12/12</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group col-12">
+                    <div class="d-flex">
+                        <label class="col-form-label col-start">Ghi chú</label>
+                        <div class="col-end">
+                            <input type="text" class="form-control" value="">
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group col-12">
+                    <div class="d-flex align-items-center">
+                        <label class="col-form-label col-start">Trạng thái</label>
+                        <div class="col-end row">
+                            <div class="icheck-primary d-inline col-3">
+                                <input type="radio" id="status-unfinished" name="r1">
+                                <label for="status-unfinished">Chưa xong</label>
+                            </div>
+                            <div class="icheck-primary d-inline col-3">
+                                <input type="radio" id="status-finished" name="r1">
+                                <label for="status-finished">Xong</label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+    <div class="modal-footer">
+        <div class="modal-footer w-100 justify-content-center">
+            <button type="button" class="btn btn-success" (click)="modal.dismiss('cancel click')">Lưu & thêm</button>
+            <button type="button" class="btn btn-primary" (click)="modal.dismiss('cancel click')">Lưu & đóng</button>
+            <button type="button" class="btn btn-info" (click)="modal.close('Ok click')">Đóng</button>
+        </div>
+    </div>
+</ng-template>

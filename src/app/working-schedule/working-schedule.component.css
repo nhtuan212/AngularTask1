@@ -1,0 +1,6 @@
+.cover-chart{box-shadow:0 4px 4px rgba(0,0,0,.25);border-radius:10px}
+.chart-middle>.row{padding:0 10%}
+.chart-middle .col-middle{background:linear-gradient(180deg,#fafafa 0,rgba(255,255,255,0) 100%);border-radius:10px;box-shadow:0 4px 4px rgba(199,199,199,.25)}
+.chart-middle .col-middle.progress-team .time h1{color:#ffb800}
+.chart-middle .col-middle.progress-team .task h2{color:#029c52}
+.chart-middle .col-middle.progress-team .remaining h2{color:#ff6000}
